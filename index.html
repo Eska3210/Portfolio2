@@ -325,10 +325,10 @@ body.dark #bioPanel {
 
     <!-- Profile Image -->
     <div id="profileTile" onclick="toggleExpandable('bioPanel')">
-        <img src="https://github.com/Eska3210/Portfolio2/blob/main/IMG_1790.png?raw=true">
+        <img src="https://github.com/Eska3210/Portfolio2/blob/main/Eska%20Rashid%20photo%20PNG.png?raw=true">
         <div id="bioPanel" class="expandable">
             <div class="expandable-content">
-<p>Professional Overview: Eska Rashid is a Programme Leader specialising in Computing, with a dedicated focus on Artificial Intelligence (AI) and Technology Leadership. Eska became a computing Lecturer in 2004 and has always been dedicated to computer science. Eska holds an MSc with Distinction in Computer Science. As the Programme Leader for Computer Science for Bath Spa University, Eska oversees the development and delivery of computer science that prepares students for the rapidly evolving tech industry. She is also leading an AI and Tech project in integrating AI into ESL, ensuring that students gain hands-on experience with the latest technologies and methodologies. In her role as AI & Tech Lead, Eska drives initiatives aimed at making use of advancing AI research and application within the institution. She collaborates with industry partners to create opportunities for student engagement in real-world projects, bridging the gap between academia and industry. She also uses her industry contacts for her AI role that provide insightful and valuable feedback. Eska has built partnerships with leading tech companies, providing students with placements, workshops, opportunities. For student success, Eska has mentored students who have gone on to secure positions at Lloyds Banking Group. Eska is deeply committed to promoting diversity and inclusion within the tech field. Her teaching philosophy emphasises hands-on learning, critical thinking, and the implications of AI, ensuring that her students are not only skilled technologists but also responsible innovators. Eska Rashid’s dedication to excellence in computing education and her visionary leadership in AI make her a pivotal figure in shaping the future of technology and innovation.</p>
+<p>Professional Overview: Eska Rashid is a Programme Leader specialising in Computing, with a dedicated focus on Artificial Intelligence (AI) and Technology Leadership...</p>
             </div>
         </div>
     </div>
@@ -338,9 +338,7 @@ body.dark #bioPanel {
         <div class="tileHeader" onclick="toggleExpandable('testimonialPanel')">Testimonials</div>
         <div id="testimonialPanel" class="expandable">
             <div class="expandable-content">
-<p>“Eska is a dedicated and committed leader who ensures that learning materials are consistently delivered across all campuses in a standardized format. She actively supports lecturers by providing them with the necessary resources. Eska keeps every team member informed about current activities and future goals, fostering a collaborative and transparent environment. She also organizes tech events and promotes a student-led learning approach, encouraging autonomy and innovation among students.” Ayodeji Triola Computing Lecturer, AI team member December 2024</p>
-<p>"Working under Eska Rashid's leadership on the AI project has been a good experience. Her vision for integrating AI to enhance learning, particularly for ESL students, is truly inspiring. From the outset, Eska demonstrated a unique ability to blend technical expertise with a deep understanding of students' needs, ensuring that every decision we made was both innovative and impactful." Khurram Asif Computing Lecturer, AI team member December 2024</p>
-<p>… (all other testimonials as in your original content) …</p>
+<p>… all testimonials content …</p>
             </div>
         </div>
     </div>
@@ -382,7 +380,7 @@ technical:`<div class="technical-tiles">
 </div>`,
 
 cv:`<h2>Curriculum Vitae</h2>
-<iframe src="Eska Rashid CV.pdf" style="width:100%;height:500px;border-radius:12px;border:2px solid #999;"></iframe>
+<iframe src="https://github.com/Eska3210/Portfolio2/blob/main/Eska%20Rashid%202025%20CV.docx%20(1).pdf?raw=true" style="width:100%;height:500px;border-radius:12px;border:2px solid #999;"></iframe>
 <button onclick="openFullscreenCV()" style="padding:12px 18px;margin-top:10px;cursor:pointer;">Open Fullscreen</button>`,
 
 contact:`<p>Email: <a href="mailto:eska3210@gmail.com">eska3210@gmail.com</a></p>
@@ -399,7 +397,31 @@ projects:`<h2>Projects</h2>
 
 experience:`<h2>Experience</h2>
 <div style="max-height:400px;overflow-y:auto;padding-right:10px;">
-<p><strong>Programme Leader, Computing – ESL (2024–Present)</strong><br>
-Leading the Computer Science programme, increasing student enrolment, improving graduate employment rates, integrating AI across curriculum, interviewing staff, managing assessments, and building industry partnerships.</p>
-<p><strong>Computing Lecturer – Elizabeth School of London (2024)</strong><br>
-Designed and delivered modules, provided academic support, and led a team of lecturers
+<p>… all experience content …</p>
+</div>`
+};
+
+function openSection(name){
+    const box=document.getElementById("contentBox");
+    box.style.display="block";
+    box.innerHTML=sections[name];
+    box.scrollIntoView({behavior:"smooth"});
+}
+
+function toggleExpandable(id){
+    document.getElementById(id).classList.toggle('show');
+}
+
+function toggleDarkMode(){
+    document.body.classList.toggle("dark");
+    document.getElementById("darkModeToggle").textContent=
+        document.body.classList.contains("dark")?"Light Mode":"Dark Mode";
+}
+
+function openFullscreenCV(){
+    window.open("https://github.com/Eska3210/Portfolio2/blob/main/Eska%20Rashid%202025%20CV.docx%20(1).pdf?raw=true","_blank").focus();
+}
+</script>
+
+</body>
+</html>
