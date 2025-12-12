@@ -59,7 +59,33 @@ body.dark #darkModeToggle {
     color:var(--text-dark);
 }
 
-/* Main Menu, Profile Section omitted for brevity */
+/* Menu Tiles */
+.menu-row {
+    display:flex;
+    justify-content:center;
+    flex-wrap:wrap;
+    gap:20px;
+    width:95%;
+    margin:20px auto;
+}
+
+.menu-tile {
+    flex:1 1 220px;
+    padding:45px;
+    border-radius:24px;
+    background:var(--tile-light);
+    font-weight:bold;
+    text-align:center;
+    font-size:1.6rem;
+    cursor:pointer;
+    transition:transform .3s,box-shadow .3s,border .3s;
+    box-shadow:3px 3px 16px var(--shadow);
+}
+.menu-tile:hover {
+    transform:scale(1.08);
+    box-shadow:0 0 20px var(--highlight),3px 3px 16px var(--shadow);
+    border:3px solid var(--highlight);
+}
 
 /* Content box */
 #contentBox {
@@ -68,7 +94,7 @@ body.dark #darkModeToggle {
     background:var(--tile-light);
     border-radius:16px;
     box-shadow:2px 2px 12px var(--shadow);
-    max-height:500px;
+    max-height:1500px;
     overflow:auto;
 }
 
@@ -119,12 +145,6 @@ body.dark #darkModeToggle {
 .project-card a:hover {
     text-decoration:underline;
 }
-
-@media(max-width:1200px) {
-    #profileSection {flex-direction:column;align-items:center;gap:30px;}
-    .sideTile{max-width:90%;}
-    #profileTile{flex:0 0 auto;}
-}
 </style>
 </head>
 <body>
@@ -132,7 +152,22 @@ body.dark #darkModeToggle {
 <header><h1>Eska Rashid Portfolio</h1></header>
 <div id="darkModeToggle" onclick="toggleDarkMode()">Dark Mode</div>
 
-<!-- ROWS and PROFILE SECTION omitted for brevity -->
+<!-- Menu Tiles -->
+<div class="menu-row">
+    <div class="menu-tile" onclick="openSection('about')">About</div>
+    <div class="menu-tile" onclick="openSection('qualifications')">Qualifications</div>
+    <div class="menu-tile" onclick="openSection('history')">Work History</div>
+    <div class="menu-tile" onclick="openSection('ambitions')">Ambitions</div>
+</div>
+<div class="menu-row">
+    <div class="menu-tile" onclick="openSection('technical')">Technical</div>
+    <div class="menu-tile" onclick="openSection('cv')">CV</div>
+    <div class="menu-tile" onclick="openSection('contact')">Contact</div>
+</div>
+<div class="menu-row">
+    <div class="menu-tile" onclick="openSection('projects')">Projects</div>
+    <div class="menu-tile" onclick="openSection('experience')">Experience</div>
+</div>
 
 <!-- Content Box -->
 <div id="contentBox"></div>
@@ -150,7 +185,7 @@ Working on multiple AI model training projects, including writing, ranking, and 
 <div class="project-card">
 <img src="https://via.placeholder.com/80?text=CAPD" alt="AI & Tech CAPD">
 <strong>AI & Tech CAPD Lead</strong><br>
-Leading an institutional AI transformation project, securing resources, coordinating a 10-person computing team, and integrating AI-driven tools for ESL students.
+Leading an institutional AI transformation project, coordinating a 10-person computing team, and integrating AI-driven tools for ESL students.
 </div>
 
 <div class="project-card">
@@ -165,7 +200,15 @@ Creating an AI chatbot to support ESL students, with rollout of AI apps across t
 A multiplayer game created by Eska: Click to Play
 </div>
 </div>`,
-// Other sections omitted for brevity
+// Placeholder for other sections
+about:`<p>Eska Rashid is a Programme Leader specialising in Computing, AI & Technology Leadership.</p>`,
+qualifications:`<ul><li>MSc Information Systems Management – Distinction</li><li>PGCE Computing with QTS</li><li>BA (Hons) Interactive Multimedia</li></ul>`,
+history:`<p>Work History details here...</p>`,
+ambitions:`<p>Ambitions details here...</p>`,
+technical:`<p>Technical skills listed here...</p>`,
+cv:`<p>CV content here...</p>`,
+contact:`<p>Contact details here...</p>`,
+experience:`<p>Experience content here...</p>`
 };
 
 function openSection(name){
@@ -175,19 +218,16 @@ function openSection(name){
     box.scrollIntoView({behavior:"smooth"});
 }
 
-function toggleExpandable(id){
-    document.getElementById(id).classList.toggle('show');
-}
-
 function toggleDarkMode(){
     document.body.classList.toggle("dark");
     document.getElementById("darkModeToggle").textContent=
         document.body.classList.contains("dark")?"Light Mode":"Dark Mode";
 }
 
-function openFullscreenCV(){
-    window.open("Eska_Rashid_CV.pdf","_blank").focus();
-}
+// Load Projects section by default
+window.onload = function() {
+    openSection('projects');
+};
 </script>
 
 </body>
