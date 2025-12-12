@@ -28,7 +28,10 @@ body.dark {
 }
 body.dark .menu-tile,
 body.dark .expandable,
-body.dark #bioPanel {
+body.dark #bioPanel,
+body.dark #contentBox,
+body.dark .technical-tiles div,
+body.dark .project-tile {
     background:var(--tile-dark);
     color:var(--text-dark);
 }
@@ -53,16 +56,17 @@ h1 {margin:0;font-size:2rem;font-weight:bold;}
     cursor:pointer;
     font-weight:bold;
     box-shadow:3px 3px 10px var(--shadow);
+    z-index:1000;
 }
 body.dark #darkModeToggle {
     background:var(--tile-dark);
     color:var(--text-dark);
 }
 
-/* Main Menu Grid */
+/* MAIN MENU GRID */
 .menu-grid {
     display:grid;
-    grid-template-columns:repeat(auto-fit, minmax(180px,1fr));
+    grid-template-columns:repeat(3, 1fr);
     gap:20px;
     width:95%;
     margin:30px auto;
@@ -257,7 +261,7 @@ body.dark #darkModeToggle {
     overflow:auto;
 }
 
-/* Scrollbar styling */
+/* Scrollbars */
 .expandable-content::-webkit-scrollbar,
 #bioPanel::-webkit-scrollbar,
 #contentBox::-webkit-scrollbar {
@@ -299,7 +303,12 @@ body.dark #contentBox {
     scrollbar-color:#1e90ff #333;
 }
 
-@media(max-width:900px) {
+/* Responsive Grid */
+@media(max-width:1024px){
+    .menu-grid {grid-template-columns:repeat(2,1fr);}
+}
+@media(max-width:600px){
+    .menu-grid {grid-template-columns:repeat(1,1fr);}
     #profileSection {flex-direction:column;align-items:center;gap:30px;}
     .sideTile{max-width:90%;}
     #profileTile{flex:0 0 auto;}
@@ -326,7 +335,6 @@ body.dark #contentBox {
 
 <!-- PROFILE SECTION -->
 <div id="profileSection">
-    <!-- Personal Statement -->
     <div class="sideTile">
         <div class="tileHeader" onclick="toggleExpandable('personalPanel')">Personal Statement</div>
         <div id="personalPanel" class="expandable">
@@ -336,7 +344,6 @@ body.dark #contentBox {
         </div>
     </div>
 
-    <!-- Profile Image -->
     <div id="profileTile" onclick="toggleExpandable('bioPanel')">
         <img src="https://raw.githubusercontent.com/Eska3210/Website/main/Eska%20Rashid%20photo%20PNG.png">
         <div id="bioPanel" class="expandable">
@@ -346,7 +353,6 @@ body.dark #contentBox {
         </div>
     </div>
 
-    <!-- Testimonials -->
     <div class="sideTile">
         <div class="tileHeader" onclick="toggleExpandable('testimonialPanel')">Testimonials</div>
         <div id="testimonialPanel" class="expandable">
@@ -358,7 +364,7 @@ body.dark #contentBox {
     </div>
 </div>
 
-<!-- Content Box -->
+<!-- CONTENT BOX -->
 <div id="contentBox"></div>
 
 <script>
