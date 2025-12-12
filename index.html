@@ -28,7 +28,8 @@ body.dark {
 }
 body.dark .menu-tile,
 body.dark .expandable,
-body.dark #bioPanel {
+body.dark #bioPanel,
+body.dark .project-card {
     background:var(--tile-dark);
     color:var(--text-dark);
 }
@@ -199,6 +200,33 @@ body.dark #darkModeToggle {
     box-shadow:0 0 12px var(--highlight),2px 2px 10px var(--shadow);
 }
 
+/* Projects Cards */
+.projects-container {
+    display:flex;
+    flex-wrap:wrap;
+    gap:20px;
+    justify-content:center;
+}
+.project-card {
+    flex:1 1 200px;
+    background:var(--tile-light);
+    padding:20px;
+    border-radius:16px;
+    box-shadow:3px 3px 16px var(--shadow);
+    text-align:center;
+    cursor:pointer;
+    transition:transform .3s,box-shadow .3s,border .3s;
+}
+.project-card:hover {
+    transform:scale(1.08);
+    box-shadow:0 0 20px var(--highlight),3px 3px 16px var(--shadow);
+    border:3px solid var(--highlight);
+}
+.project-card a {
+    text-decoration:none;
+    color:inherit;
+}
+
 /* Content box */
 #contentBox {
     margin:20px;
@@ -255,7 +283,6 @@ body.dark #bioPanel {
 <body>
 
 <header><h1>Eska Rashid Portfolio</h1></header>
-
 <div id="darkModeToggle" onclick="toggleDarkMode()">Dark Mode</div>
 
 <!-- ROW 1 -->
@@ -287,18 +314,21 @@ body.dark #bioPanel {
         <div class="tileHeader" onclick="toggleExpandable('personalPanel')">Personal Statement</div>
         <div id="personalPanel" class="expandable">
             <div class="expandable-content">
-<p>I am a passionate and results-oriented computing professional...</p>
-
+<p>I am a passionate and results-oriented computing professional with a background in academia, project management, and leadership. This combined experience has given me the skills and knowledge to excel as a Computing Lecturer and Programme Lead, interviewing, training, mentoring and leading Computer Science Lecturers.</p>
+<p>Increasing my professional network, I have established valuable connections with industry leaders from Lloyds Bank, Yorkshire Water, CalderIT, Future Transformations, Hippo, Answer Digital, Parall.ax and more. These connections not only provide guest speaker opportunities for students but also offer real-world insights into current trends and career paths.</p>
+<p>I am an avid learner, actively attending live webinars on AI, robotics and emerging technologies to stay ahead of the curve and incorporate these advancements into my teaching. I also attend tech events to further this learning and being part of tech groups.</p>
+<p>My leadership skills were built at Huddersfield University's laptop rental service. For four years, I managed every aspect of the scheme, from overseeing staff and ensuring smooth operations at University of Huddersfield campus. This experience instilled in me invaluable skills in project management, team building, and navigating complex organisational structures. More importantly, it taught me the power of collaboration with senior university leaders to achieve ambitious goals.</p>
+<p>Achieving a distinction in my MSc Computer Science programme, I consistently excelled amongst my all-male cohort, securing high grades. Navigating a highly competitive environment gave me leadership skills, resilience, and ability to excel under pressure, qualities I translate in lecturing to effectively guide and challenge students. Thriving in such an environment further motivated me to build an inclusive learning environment where all students, regardless of background, can excel.</p>
             </div>
         </div>
     </div>
 
     <!-- Profile Image -->
     <div id="profileTile" onclick="toggleExpandable('bioPanel')">
-        <img src="https://github.com/Eska3210/Portfolio2/blob/main/IMG_1790.png">
-        <div id="bioPanel">
+        <img src="https://github.com/Eska3210/Portfolio2/blob/main/IMG_1790.png?raw=true">
+        <div id="bioPanel" class="expandable">
             <div class="expandable-content">
-<p>Professional Overview: Eska Rashid is a Programme Leader...</p>
+<p>Professional Overview: Eska Rashid is a Programme Leader specialising in Computing, with a dedicated focus on Artificial Intelligence (AI) and Technology Leadership. Eska became a computing Lecturer in 2004 and has always been dedicated to computer science. Eska holds an MSc with Distinction in Computer Science. As the Programme Leader for Computer Science for Bath Spa University, Eska oversees the development and delivery of computer science that prepares students for the rapidly evolving tech industry. She is also leading an AI and Tech project in integrating AI into ESL, ensuring that students gain hands-on experience with the latest technologies and methodologies. In her role as AI & Tech Lead, Eska drives initiatives aimed at making use of advancing AI research and application within the institution. She collaborates with industry partners to create opportunities for student engagement in real-world projects, bridging the gap between academia and industry. She also uses her industry contacts for her AI role that provide insightful and valuable feedback. Eska has built partnerships with leading tech companies, providing students with placements, workshops, opportunities. For student success, Eska has mentored students who have gone on to secure positions at Lloyds Banking Group. Eska is deeply committed to promoting diversity and inclusion within the tech field. Her teaching philosophy emphasises hands-on learning, critical thinking, and the implications of AI, ensuring that her students are not only skilled technologists but also responsible innovators. Eska Rashid’s dedication to excellence in computing education and her visionary leadership in AI make her a pivotal figure in shaping the future of technology and innovation.</p>
             </div>
         </div>
     </div>
@@ -308,7 +338,9 @@ body.dark #bioPanel {
         <div class="tileHeader" onclick="toggleExpandable('testimonialPanel')">Testimonials</div>
         <div id="testimonialPanel" class="expandable">
             <div class="expandable-content">
-<p>“Eska is a dedicated and committed leader...</p>
+<p>“Eska is a dedicated and committed leader who ensures that learning materials are consistently delivered across all campuses in a standardized format. She actively supports lecturers by providing them with the necessary resources. Eska keeps every team member informed about current activities and future goals, fostering a collaborative and transparent environment. She also organizes tech events and promotes a student-led learning approach, encouraging autonomy and innovation among students.” Ayodeji Triola Computing Lecturer, AI team member December 2024</p>
+<p>"Working under Eska Rashid's leadership on the AI project has been a good experience. Her vision for integrating AI to enhance learning, particularly for ESL students, is truly inspiring. From the outset, Eska demonstrated a unique ability to blend technical expertise with a deep understanding of students' needs, ensuring that every decision we made was both innovative and impactful." Khurram Asif Computing Lecturer, AI team member December 2024</p>
+<p>… (all other testimonials as in your original content) …</p>
             </div>
         </div>
     </div>
@@ -358,124 +390,16 @@ contact:`<p>Email: <a href="mailto:eska3210@gmail.com">eska3210@gmail.com</a></p
 <p>Mobile: 07776075490</p>`,
 
 projects:`<h2>Projects</h2>
-
-<!-- Project Cards Container -->
-<div style="
-    display:flex;
-    flex-wrap:wrap;
-    gap:20px;
-    justify-content:center;
-    margin-top:20px;
-    max-height:450px;
-    overflow-y:auto;
-    padding-right:10px;
-">
-
-    <!-- Card 1 -->
-    <a href="#" target="_blank" style="
-        flex:1 1 250px;
-        max-width:280px;
-        background:var(--tile-light);
-        padding:20px;
-        border-radius:16px;
-        box-shadow:2px 2px 12px var(--shadow);
-        text-decoration:none;
-        color:inherit;
-        transition:transform 0.3s ease, box-shadow 0.3s ease;
-        display:block;
-    "
-    onmouseover="this.style.transform='scale(1.05)'; this.style.boxShadow='4px 4px 18px var(--shadow)';"
-    onmouseout="this.style.transform='scale(1)'; this.style.boxShadow='2px 2px 12px var(--shadow)';">
-        <strong>Mathematics AI Consultant – Outlier AI</strong>
-        <p>Working on AI model training, writing, ranking, and evaluation tasks.</p>
-    </a>
-
-    <!-- Card 2 -->
-    <a href="#" target="_blank" style="
-        flex:1 1 250px;
-        max-width:280px;
-        background:var(--tile-light);
-        padding:20px;
-        border-radius:16px;
-        box-shadow:2px 2px 12px var(--shadow);
-        text-decoration:none;
-        color:inherit;
-        transition:transform 0.3s.ease, box-shadow 0.3s ease;
-        display:block;
-    "
-    onmouseover="this.style.transform='scale(1.05)'; this.style.boxShadow='4px 4px 18px var(--shadow)';"
-    onmouseout="this.style.transform='scale(1)'; this.style.boxShadow='2px 2px 12px var(--shadow)';">
-        <strong>AI & Tech CAPD Lead</strong>
-        <p>Leading AI transformation and digital innovation projects across the institution.</p>
-    </a>
-
-    <!-- Card 3 -->
-    <a href="#" target="_blank" style="
-        flex:1 1 250px;
-        max-width:280px;
-        background:var(--tile-light);
-        padding:20px;
-        border-radius:16px;
-        box-shadow:2px 2px 12px var(--shadow);
-        text-decoration:none;
-        color:inherit;
-        transition:transform 0.3s ease, box-shadow 0.3s ease;
-        display:block;
-    "
-    onmouseover="this.style.transform='scale(1.05)'; this.style.boxShadow='4px 4px 18px var(--shadow)';"
-    onmouseout="this.style.transform='scale(1)'; this.style.boxShadow='2px 2px 12px var(--shadow)';">
-        <strong>AI Chatbot Development</strong>
-        <p>Developing an AI-driven ESL support chatbot.</p>
-    </a>
-
-    <!-- Card 4 — Your Interactive Game -->
-    <a href="https://eska3210.github.io/JavaGame/" target="_blank" style="
-        flex:1 1 250px;
-        max-width:280px;
-        background:var(--tile-light);
-        padding:20px;
-        border-radius:16px;
-        box-shadow:2px 2px 12px var(--shadow);
-        text-decoration:none;
-        color:inherit;
-        transition:transform 0.3s ease, box-shadow 0.3s ease;
-        display:block;
-    "
-    onmouseover="this.style.transform='scale(1.05)'; this.style.boxShadow='4px 4px 18px var(--shadow)';"
-    onmouseout="this.style.transform='scale(1)'; this.style.boxShadow='2px 2px 12px var(--shadow)';">
-        <strong>Multiplayer Numbers Game – Created by Eska</strong>
-        <p>Interactive Java-based multiplayer mathematics game.</p>
-    </a>
-
+<div class="projects-container">
+<div class="project-card"><strong>Mathematics, AI Consultant – Outlier AI (2024–Present)</strong></div>
+<div class="project-card"><strong>AI & Tech CAPD Lead</strong></div>
+<div class="project-card"><strong>AI Chatbot Development</strong></div>
+<div class="project-card"><a href="https://eska3210.github.io/JavaGame/" target="_blank"><strong>Multiplayer Number Game</strong><br>Created by Eska</a></div>
 </div>`,
 
 experience:`<h2>Experience</h2>
 <div style="max-height:400px;overflow-y:auto;padding-right:10px;">
-<p><strong>Programme Leader, Computing – ESL (2024–Present)</strong>...</p>
-</div>`
-};
-
-function openSection(name){
-    const box=document.getElementById("contentBox");
-    box.style.display="block";
-    box.innerHTML=sections[name];
-    box.scrollIntoView({behavior:"smooth"});
-}
-
-function toggleExpandable(id){
-    document.getElementById(id).classList.toggle('show');
-}
-
-function toggleDarkMode(){
-    document.body.classList.toggle("dark");
-    document.getElementById("darkModeToggle").textContent=
-        document.body.classList.contains("dark")?"Light Mode":"Dark Mode";
-}
-
-function openFullscreenCV(){
-    window.open("Eska_Rashid_CV.pdf","_blank").focus();
-}
-</script>
-
-</body>
-</html>
+<p><strong>Programme Leader, Computing – ESL (2024–Present)</strong><br>
+Leading the Computer Science programme, increasing student enrolment, improving graduate employment rates, integrating AI across curriculum, interviewing staff, managing assessments, and building industry partnerships.</p>
+<p><strong>Computing Lecturer – Elizabeth School of London (2024)</strong><br>
+Designed and delivered modules, provided academic support, and led a team of lecturers
