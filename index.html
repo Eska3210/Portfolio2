@@ -59,7 +59,7 @@ body.dark #darkModeToggle {
     color:var(--text-dark);
 }
 
-/* Menu Tiles */
+/* Main Menu - multiple rows */
 .menu-row {
     display:flex;
     justify-content:center;
@@ -87,6 +87,135 @@ body.dark #darkModeToggle {
     border:3px solid var(--highlight);
 }
 
+/* Profile Section */
+#profileSection {
+    display:flex;
+    justify-content:center;
+    align-items:flex-start;
+    gap:50px;
+    margin:50px 20px;
+    flex-wrap:wrap;
+}
+
+.sideTile {
+    flex:1;
+    max-width:350px;
+    display:flex;
+    flex-direction:column;
+    gap:20px;
+}
+
+.tileHeader {
+    font-size:1.6rem;
+    font-weight:bold;
+    text-align:center;
+    padding:25px;
+    border-radius:16px;
+    background:var(--tile-light);
+    cursor:pointer;
+    box-shadow:3px 3px 14px var(--shadow);
+    transition:transform .3s,box-shadow .3s;
+}
+.tileHeader:hover {
+    transform:scale(1.05);
+    box-shadow:0 0 20px var(--highlight),3px 3px 14px var(--shadow);
+}
+
+.expandable {
+    max-height:0;
+    overflow:hidden;
+    transition:max-height 0.5s ease,padding 0.5s ease;
+    background:var(--tile-light);
+    padding:0 20px;
+    border-radius:12px;
+    box-shadow:2px 2px 10px var(--shadow);
+    font-size:0.95rem;
+    line-height:1.5;
+}
+.expandable.show {
+    padding:20px;
+    max-height:2500px;
+    overflow:auto;
+}
+.expandable-content {
+    max-height:500px;
+    overflow-y:auto;
+    padding-right:10px;
+}
+
+/* Profile image */
+#profileTile {
+    flex:0 0 220px;
+    display:flex;
+    flex-direction:column;
+    align-items:center;
+    cursor:pointer;
+    text-align:center;
+}
+#profileTile img {
+    width:180px;
+    border-radius:20px;
+    transition:transform .3s;
+}
+#profileTile img:hover {
+    transform:scale(1.05);
+}
+#bioPanel {
+    max-height:0;
+    overflow:auto;
+    transition:max-height 0.5s ease,padding 0.5s ease;
+    background:var(--tile-light);
+    padding:0 20px;
+    border-radius:12px;
+    box-shadow:2px 2px 10px var(--shadow);
+    font-size:0.95rem;
+    line-height:1.5;
+}
+#bioPanel.show {
+    padding:20px;
+    max-height:700px;
+    overflow:auto;
+}
+
+/* Technical tiles */
+.technical-tiles {
+    display:flex;
+    flex-wrap:wrap;
+    gap:10px;
+    margin-top:10px;
+    justify-content:center;
+}
+.technical-tiles div {
+    padding:10px 15px;
+    border-radius:12px;
+    background:var(--tile-light);
+    box-shadow:2px 2px 10px var(--shadow);
+    font-size:0.95rem;
+    transition:transform .3s,box-shadow .3s;
+    cursor:pointer;
+}
+.technical-tiles div:hover {
+    transform:scale(1.05);
+    box-shadow:0 0 12px var(--highlight),2px 2px 10px var(--shadow);
+}
+
+/* Project cards */
+.project-card {
+    flex:1 1 250px;
+    background:var(--tile-light);
+    padding:20px;
+    border-radius:16px;
+    box-shadow:2px 2px 12px var(--shadow);
+    transition:transform .3s,box-shadow .3s;
+    cursor:pointer;
+    text-decoration:none;
+    color:inherit;
+}
+.project-card:hover {
+    transform:scale(1.05);
+    box-shadow:0 0 20px var(--highlight),2px 2px 12px var(--shadow);
+}
+
 /* Content box */
 #contentBox {
     margin:20px;
@@ -94,79 +223,117 @@ body.dark #darkModeToggle {
     background:var(--tile-light);
     border-radius:16px;
     box-shadow:2px 2px 12px var(--shadow);
-    max-height:1500px;
+    max-height:500px;
     overflow:auto;
 }
 
-/* Project Grid */
-.project-grid {
-    display:grid;
-    grid-template-columns:repeat(auto-fit,minmax(280px,1fr));
-    gap:20px;
-    margin-top:10px;
+/* Scrollbar styling */
+.expandable-content::-webkit-scrollbar,
+#bioPanel::-webkit-scrollbar {
+    width:10px;
 }
-.project-card {
-    padding:20px;
-    border-radius:24px;
-    background:var(--tile-light);
-    font-weight:bold;
-    text-align:center;
-    font-size:1.1rem;
-    cursor:pointer;
-    box-shadow:3px 3px 16px var(--shadow);
-    transition:transform .3s,box-shadow .3s,border .3s,background .3s;
-    display:flex;
-    flex-direction:column;
-    align-items:center;
-    gap:15px;
+.expandable-content::-webkit-scrollbar-track,
+#bioPanel::-webkit-scrollbar-track {
+    background:#f0f0f0;
+    border-radius:10px;
 }
-.project-card:hover {
-    transform:scale(1.05);
-    box-shadow:0 0 20px var(--highlight),3px 3px 16px var(--shadow);
-    border:3px solid var(--highlight);
-    background:linear-gradient(145deg,#d1eaff,#a8d8ff,#7fc6ff);
+body.dark .expandable-content::-webkit-scrollbar-track,
+body.dark #bioPanel::-webkit-scrollbar-track {
+    background:#333;
 }
-.project-card img {
-    width:80px;
-    height:80px;
-    object-fit:cover;
-    border-radius:12px;
-    box-shadow:1px 1px 6px rgba(0,0,0,0.2);
-    transition:transform .3s;
+.expandable-content::-webkit-scrollbar-thumb,
+#bioPanel::-webkit-scrollbar-thumb {
+    background-color:#1e90ff;
+    border-radius:10px;
+    border:2px solid transparent;
+    background-clip:content-box;
 }
-.project-card img:hover {
-    transform:scale(1.05);
+.expandable-content::-webkit-scrollbar-thumb:hover,
+#bioPanel::-webkit-scrollbar-thumb:hover {
+    background-color:#0d62c1;
 }
-.project-card a {
-    text-decoration:none;
-    color:var(--highlight);
-    font-weight:bold;
+.expandable-content,
+#bioPanel {
+    scrollbar-width:thin;
+    scrollbar-color:#1e90ff #f0f0f0;
 }
-.project-card a:hover {
-    text-decoration:underline;
+body.dark .expandable-content,
+body.dark #bioPanel {
+    scrollbar-color:#1e90ff #333;
+}
+
+@media(max-width:1200px) {
+    #profileSection {flex-direction:column;align-items:center;gap:30px;}
+    .sideTile{max-width:90%;}
+    #profileTile{flex:0 0 auto;}
 }
 </style>
 </head>
 <body>
 
 <header><h1>Eska Rashid Portfolio</h1></header>
+
 <div id="darkModeToggle" onclick="toggleDarkMode()">Dark Mode</div>
 
-<!-- Menu Tiles -->
+<!-- ROW 1 -->
 <div class="menu-row">
     <div class="menu-tile" onclick="openSection('about')">About</div>
     <div class="menu-tile" onclick="openSection('qualifications')">Qualifications</div>
     <div class="menu-tile" onclick="openSection('history')">Work History</div>
     <div class="menu-tile" onclick="openSection('ambitions')">Ambitions</div>
 </div>
+
+<!-- ROW 2 -->
 <div class="menu-row">
     <div class="menu-tile" onclick="openSection('technical')">Technical</div>
     <div class="menu-tile" onclick="openSection('cv')">CV</div>
     <div class="menu-tile" onclick="openSection('contact')">Contact</div>
 </div>
+
+<!-- ROW 3 -->
 <div class="menu-row">
     <div class="menu-tile" onclick="openSection('projects')">Projects</div>
     <div class="menu-tile" onclick="openSection('experience')">Experience</div>
+</div>
+
+<!-- PROFILE SECTION -->
+<div id="profileSection">
+
+    <!-- Personal Statement -->
+    <div class="sideTile">
+        <div class="tileHeader" onclick="toggleExpandable('personalPanel')">Personal Statement</div>
+        <div id="personalPanel" class="expandable">
+            <div class="expandable-content">
+<p>I am a passionate and results-oriented computing professional with a background in academia, project management, and leadership. This combined experience has given me the skills and knowledge to excel as a Computing Lecturer and Programme Lead, interviewing, training, mentoring and leading Computer Science Lecturers.</p>
+<p>Increasing my professional network, I have established valuable connections with industry leaders from Lloyds Bank, Yorkshire Water, CalderIT, Future Transformations, Hippo, Answer Digital, Parall.ax and more. These connections not only provide guest speaker opportunities for students but also offer real-world insights into current trends and career paths.</p>
+<p>I am an avid learner, actively attending live webinars on AI, robotics and emerging technologies to stay ahead of the curve and incorporate these advancements into my teaching. I also attend tech events to further this learning and being part of tech groups.</p>
+<p>My leadership skills were built at Huddersfield University's laptop rental service. For four years, I managed every aspect of the scheme, from overseeing staff and ensuring smooth operations at University of Huddersfield campus. This experience instilled in me invaluable skills in project management, team building, and navigating complex organisational structures. More importantly, it taught me the power of collaboration with senior university leaders to achieve ambitious goals.</p>
+<p>Achieving a distinction in my MSc Computer Science programme, I consistently excelled amongst my all-male cohort, securing high grades. Navigating a highly competitive environment gave me leadership skills, resilience, and ability to excel under pressure, qualities I translate in lecturing to effectively guide and challenge students. Thriving in such an environment further motivated me to build an inclusive learning environment where all students, regardless of background, can excel.</p>
+            </div>
+        </div>
+    </div>
+
+    <!-- Profile Image -->
+    <div id="profileTile" onclick="toggleExpandable('bioPanel')">
+        <img src="https://raw.githubusercontent.com/Eska3210/Website/main/Eska%20Rashid%20photo%20PNG.png">
+        <div id="bioPanel">
+            <div class="expandable-content">
+<p>Professional Overview: Eska Rashid is a Programme Leader specialising in Computing, with a dedicated focus on Artificial Intelligence (AI) and Technology Leadership. Eska became a computing Lecturer in 2004 and has always been dedicated to computer science. Eska holds an MSc with Distinction in Computer Science. As the Programme Leader for Computer Science for Bath Spa University, Eska oversees the development and delivery of computer science that prepares students for the rapidly evolving tech industry. She is also leading an AI and Tech project in integrating AI into ESL, ensuring that students gain hands-on experience with the latest technologies and methodologies. In her role as AI & Tech Lead, Eska drives initiatives aimed at making use of advancing AI research and application within the institution. She collaborates with industry partners to create opportunities for student engagement in real-world projects, bridging the gap between academia and industry. She also uses her industry contacts for her AI role that provide insightful and valuable feedback. Eska has built partnerships with leading tech companies, providing students with placements, workshops, opportunities. For student success, Eska has mentored students who have gone on to secure positions at Lloyds Banking Group. Eska is deeply committed to promoting diversity and inclusion within the tech field. She actively participates in initiatives aimed at encouraging underrepresented groups to pursue careers in computing and AI. Her teaching philosophy emphasises hands-on learning, critical thinking, and the implications of AI, ensuring that her students are not only skilled technologists but also responsible innovators. Eska Rashid’s dedication to excellence in computing education and her visionary leadership in AI make her a pivotal figure in shaping the future of technology and innovation.</p>
+            </div>
+        </div>
+    </div>
+
+    <!-- Testimonials -->
+    <div class="sideTile">
+        <div class="tileHeader" onclick="toggleExpandable('testimonialPanel')">Testimonials</div>
+        <div id="testimonialPanel" class="expandable">
+            <div class="expandable-content">
+<p>“Eska is a dedicated and committed leader who ensures that learning materials are consistently delivered across all campuses in a standardized format. She actively supports lecturers by providing them with the necessary resources. Eska keeps every team member informed about current activities and future goals, fostering a collaborative and transparent environment. She also organizes tech events and promotes a student-led learning approach, encouraging autonomy and innovation among students.” Ayodeji Triola Computing Lecturer, AI team member December 2024</p>
+<!-- other testimonials omitted for brevity -->
+            </div>
+        </div>
+    </div>
+
 </div>
 
 <!-- Content Box -->
@@ -174,41 +341,77 @@ body.dark #darkModeToggle {
 
 <script>
 const sections = {
-projects:`<h2>Projects</h2>
-<div class="project-grid">
-<div class="project-card">
-<img src="https://via.placeholder.com/80?text=AI" alt="Outlier AI">
-<strong>Mathematics, AI Consultant – Outlier AI (2024–Present)</strong><br>
-Working on multiple AI model training projects, including writing, ranking, and evaluating chatbot prompts.
-</div>
-
-<div class="project-card">
-<img src="https://via.placeholder.com/80?text=CAPD" alt="AI & Tech CAPD">
-<strong>AI & Tech CAPD Lead</strong><br>
-Leading an institutional AI transformation project, coordinating a 10-person computing team, and integrating AI-driven tools for ESL students.
-</div>
-
-<div class="project-card">
-<img src="https://via.placeholder.com/80?text=Chatbot" alt="AI Chatbot">
-<strong>AI Chatbot Development</strong><br>
-Creating an AI chatbot to support ESL students, with rollout of AI apps across the institution.
-</div>
-
-<div class="project-card" onclick="window.open('https://eska3210.github.io/JavaGame/','_blank')">
-<img src="https://via.placeholder.com/80?text=JavaGame" alt="Java Game">
-<strong>Multiple Player Java Game</strong><br>
-A multiplayer game created by Eska: Click to Play
-</div>
-</div>`,
-// Placeholder for other sections
 about:`<p>Eska Rashid is a Programme Leader specialising in Computing, AI & Technology Leadership.</p>`,
-qualifications:`<ul><li>MSc Information Systems Management – Distinction</li><li>PGCE Computing with QTS</li><li>BA (Hons) Interactive Multimedia</li></ul>`,
-history:`<p>Work History details here...</p>`,
-ambitions:`<p>Ambitions details here...</p>`,
-technical:`<p>Technical skills listed here...</p>`,
-cv:`<p>CV content here...</p>`,
-contact:`<p>Contact details here...</p>`,
-experience:`<p>Experience content here...</p>`
+
+qualifications:`<ul>
+<li>MSc Information Systems Management – Distinction</li>
+<li>PGCE Computing with QTS</li>
+<li>BA (Hons) Interactive Multimedia</li>
+</ul>`,
+
+history:`<ul>
+<li>Programme Leader, Computing – Bath Spa University / ESL</li>
+<li>AI & Tech CAPD Project Lead</li>
+<li>Computing Lecturer – Multiple Institutions</li>
+</ul>`,
+
+ambitions:`<ul>
+<li>Advance AI-driven tools in higher education</li>
+<li>Expand industry partnerships</li>
+<li>Strengthen diversity & inclusion in technology</li>
+</ul>`,
+
+technical:`<div class="technical-tiles">
+<div>PHP</div><div>SQL</div><div>Python</div><div>Java</div><div>C#</div><div>C++</div>
+<div>MySQL</div><div>ASP.NET</div><div>CSS</div><div>Excel</div><div>Access</div>
+<div>Google Suite</div><div>Microsoft Apps</div><div>Bootstrap</div><div>Javascript</div>
+<div>HTML</div><div>XML</div><div>PostgreSQL</div><div>Node.js</div><div>Pandas</div>
+<div>Git</div><div>MongoDB</div><div>.NET</div><div>Illustrator</div><div>Google Sheets</div>
+<div>R</div><div>Redis</div><div>XAMPP</div><div>Power BI</div><div>DAX</div>
+</div>`,
+
+cv:`<h2>Curriculum Vitae</h2>
+<iframe src="Eska Rashid CV.pdf" style="width:100%;height:500px;border-radius:12px;border:2px solid #999;"></iframe>
+<button onclick="openFullscreenCV()" style="padding:12px 18px;margin-top:10px;cursor:pointer;">Open Fullscreen</button>`,
+
+contact:`<p>Email: <a href="mailto:eska3210@gmail.com">eska3210@gmail.com</a></p>
+<p>LinkedIn: <a href="https://linkedin.com/in/eska-rashid" target="_blank">linkedin.com/in/eska-rashid</a></p>
+<p>Mobile: 07776075490</p>`,
+
+projects:`<h2>Projects</h2>
+<div style="display:flex;flex-wrap:wrap;gap:20px;max-height:500px;overflow-y:auto;padding-right:10px;">
+
+    <a href="https://example.com/mathematics-ai" target="_blank" class="project-card">
+        <strong>Mathematics, AI Consultant – Outlier AI (2024–Present)</strong>
+        <p>Working on multiple AI model training projects, including writing, ranking, and evaluating chatbot prompts.</p>
+    </a>
+
+    <a href="https://example.com/ai-tech-capd" target="_blank" class="project-card">
+        <strong>AI & Tech CAPD Lead</strong>
+        <p>Leading an institutional AI transformation project, securing resources, coordinating a 10-person computing team, and integrating AI-driven tools for ESL students.</p>
+    </a>
+
+    <a href="https://example.com/ai-chatbot" target="_blank" class="project-card">
+        <strong>AI Chatbot Development</strong>
+        <p>Creating an AI chatbot to support ESL students, with rollout of AI apps across the institution.</p>
+    </a>
+
+    <a href="https://example.com/multiplayer-numbers-game" target="_blank" class="project-card">
+        <strong>Multiplayer Numbers Game – Created by Eska</strong>
+        <p>An interactive multiplayer numbers game designed to engage users in mathematical challenges and collaborative problem-solving.</p>
+    </a>
+
+</div>`,
+
+experience:`<h2>Experience</h2>
+<div style="max-height:400px;overflow-y:auto;padding-right:10px;">
+
+<p><strong>Programme Leader, Computing – ESL (2024–Present)</strong><br>
+Leading the Computer Science programme, increasing student enrolment, improving graduate employment rates, integrating AI across curriculum, interviewing staff, managing assessments, and building industry partnerships.</p>
+
+<!-- other experience entries omitted for brevity -->
+
+</div>`
 };
 
 function openSection(name){
@@ -218,16 +421,19 @@ function openSection(name){
     box.scrollIntoView({behavior:"smooth"});
 }
 
+function toggleExpandable(id){
+    document.getElementById(id).classList.toggle('show');
+}
+
 function toggleDarkMode(){
     document.body.classList.toggle("dark");
     document.getElementById("darkModeToggle").textContent=
         document.body.classList.contains("dark")?"Light Mode":"Dark Mode";
 }
 
-// Load Projects section by default
-window.onload = function() {
-    openSection('projects');
-};
+function openFullscreenCV(){
+    window.open("Eska_Rashid_CV.pdf","_blank").focus();
+}
 </script>
 
 </body>
