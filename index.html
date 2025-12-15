@@ -267,6 +267,13 @@ body.dark #bioPanel {
     .sideTile{max-width:90%;}
     #profileTile{flex:0 0 auto;}
 }
+
+body.dark footer {
+    background: #2c2c2c;
+    color: #f1f1f1;
+    box-shadow:0 -4px 8px rgba(0,0,0,0.6);
+}
+    
 </style>
 </head>
 <body>
@@ -412,6 +419,10 @@ function toggleDarkMode(){
         document.body.classList.contains("dark")?"Light Mode":"Dark Mode";
 }
 </script>
+
+<footer style="text-align:center; padding:15px; background:var(--tile-light); color:var(--text-light); box-shadow:0 -4px 8px var(--shadow);">
+    © 2025 Eska Rashid. All rights reserved.
+</footer>
 
 </body>
 </html>
