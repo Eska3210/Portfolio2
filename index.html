@@ -3,8 +3,7 @@
 <head>
 <meta charset="UTF-8">
 <meta name="viewport" content="width=device-width, initial-scale=1.0">
-<title>Eska Rashid – Portfolio</title>
-
+<title>Hannah Ambrie Majeed – Portfolio</title>
 <style>
 :root {
     --bg-light:#e6e6e6;
@@ -17,7 +16,6 @@
     --shadow:rgba(0,0,0,0.35);
 }
 
-/* ===== BODY ===== */
 body {
     margin:0;
     font-family:'Segoe UI',sans-serif;
@@ -28,21 +26,50 @@ body.dark {
     background:var(--bg-dark);
     color:var(--text-dark);
 }
+body.dark .menu-tile,
+body.dark .expandable,
+body.dark #bioPanel {
+    background:var(--tile-dark);
+    color:var(--text-dark);
+}
 
-/* ===== HEADER ===== */
+body.dark header {
+    background: var(--tile-dark);
+    color: var(--text-dark);
+    border-bottom: 2px solid #444;
+}
+
+body.dark .tileHeader {
+    background: var(--tile-dark);
+    color: var(--text-dark);
+}
+
+body.dark .menu-tile,
+body.dark .expandable,
+body.dark #bioPanel,
+body.dark .tileHeader,
+body.dark .technical-tiles div,
+body.dark #contentBox {
+    background: #2c2c2c;
+    color: #f1f1f1;
+    box-shadow: 3px 3px 16px rgba(0,0,0,0.6);
+}
+
+body.dark a {
+    color: #1e90ff;
+    text-decoration: underline;
+}
+
 header {
     text-align:center;
     padding:25px;
+    width:100%;
     background:var(--tile-light);
     box-shadow:0 6px 14px var(--shadow);
     border-bottom:2px solid #888;
 }
-body.dark header {
-    background:var(--tile-dark);
-    border-bottom:2px solid #444;
-}
+h1 {margin:0;font-size:2rem;font-weight:bold;}
 
-/* ===== DARK MODE TOGGLE ===== */
 #darkModeToggle {
     position:absolute;
     top:20px;
@@ -59,7 +86,6 @@ body.dark #darkModeToggle {
     color:var(--text-dark);
 }
 
-/* ===== MENU ===== */
 .menu-row {
     display:flex;
     justify-content:center;
@@ -74,37 +100,36 @@ body.dark #darkModeToggle {
     padding:45px;
     border-radius:24px;
     background:var(--tile-light);
-    font-size:1.6rem;
     font-weight:bold;
     text-align:center;
+    font-size:1.6rem;
     cursor:pointer;
+    transition:transform .3s,box-shadow .3s,border .3s;
     box-shadow:3px 3px 16px var(--shadow);
-    transition:transform .3s, box-shadow .3s;
-}
-body.dark .menu-tile {
-    background:var(--tile-dark);
-    color:var(--text-dark);
 }
 .menu-tile:hover {
     transform:scale(1.08);
     box-shadow:0 0 20px var(--highlight),3px 3px 16px var(--shadow);
+    border:3px solid var(--highlight);
 }
 
-/* ===== PROFILE SECTION ===== */
 #profileSection {
     display:flex;
-    gap:50px;
     justify-content:center;
+    align-items:flex-start;
+    gap:50px;
     margin:50px 20px;
     flex-wrap:wrap;
 }
 
 .sideTile {
-    max-width:350px;
     flex:1;
+    max-width:350px;
+    display:flex;
+    flex-direction:column;
+    gap:20px;
 }
 
-/* ===== TILE HEADERS ===== */
 .tileHeader {
     font-size:1.6rem;
     font-weight:bold;
@@ -114,33 +139,40 @@ body.dark .menu-tile {
     background:var(--tile-light);
     cursor:pointer;
     box-shadow:3px 3px 14px var(--shadow);
+    transition:transform .3s,box-shadow .3s;
 }
-body.dark .tileHeader {
-    background:var(--tile-dark);
-    color:var(--text-dark);
+.tileHeader:hover {
+    transform:scale(1.05);
+    box-shadow:0 0 20px var(--highlight),3px 3px 14px var(--shadow);
 }
 
-/* ===== EXPANDABLE PANELS ===== */
 .expandable {
     max-height:0;
     overflow:hidden;
+    transition:max-height 0.5s ease,padding 0.5s ease;
     background:var(--tile-light);
     padding:0 20px;
     border-radius:12px;
     box-shadow:2px 2px 10px var(--shadow);
-    transition:max-height .5s ease,padding .5s ease;
+    font-size:0.95rem;
+    line-height:1.5;
 }
 .expandable.show {
-    max-height:2500px;
     padding:20px;
+    max-height:2500px;
+    overflow:auto;
 }
-body.dark .expandable {
-    background:var(--tile-dark);
-    color:var(--text-dark);
+.expandable-content {
+    max-height:500px;
+    overflow-y:auto;
+    padding-right:10px;
 }
 
-/* ===== PROFILE IMAGE ===== */
 #profileTile {
+    flex:0 0 220px;
+    display:flex;
+    flex-direction:column;
+    align-items:center;
     cursor:pointer;
     text-align:center;
 }
@@ -152,27 +184,44 @@ body.dark .expandable {
 #profileTile img:hover {
     transform:scale(1.05);
 }
-
-/* ===== BIO PANEL ===== */
 #bioPanel {
     max-height:0;
-    overflow:hidden;
+    overflow:auto;
+    transition:max-height 0.5s ease,padding 0.5s ease;
     background:var(--tile-light);
     padding:0 20px;
     border-radius:12px;
     box-shadow:2px 2px 10px var(--shadow);
-    transition:max-height .5s ease,padding .5s ease;
+    font-size:0.95rem;
+    line-height:1.5;
 }
 #bioPanel.show {
-    max-height:700px;
     padding:20px;
-}
-body.dark #bioPanel {
-    background:var(--tile-dark);
-    color:var(--text-dark);
+    max-height:700px;
+    overflow:auto;
 }
 
-/* ===== CONTENT BOX ===== */
+.technical-tiles {
+    display:flex;
+    flex-wrap:wrap;
+    gap:10px;
+    margin-top:10px;
+    justify-content:center;
+}
+.technical-tiles div {
+    padding:10px 15px;
+    border-radius:12px;
+    background:var(--tile-light);
+    box-shadow:2px 2px 10px var(--shadow);
+    font-size:0.95rem;
+    transition:transform .3s,box-shadow .3s;
+    cursor:pointer;
+}
+.technical-tiles div:hover {
+    transform:scale(1.05);
+    box-shadow:0 0 12px var(--highlight),2px 2px 10px var(--shadow);
+}
+
 #contentBox {
     margin:20px;
     padding:20px;
@@ -182,104 +231,184 @@ body.dark #bioPanel {
     max-height:500px;
     overflow:auto;
 }
-body.dark #contentBox {
-    background:var(--tile-dark);
-    color:var(--text-dark);
+
+.expandable-content::-webkit-scrollbar,
+#bioPanel::-webkit-scrollbar {
+    width:10px;
+}
+.expandable-content::-webkit-scrollbar-track,
+#bioPanel::-webkit-scrollbar-track {
+    background:#f0f0f0;
+    border-radius:10px;
+}
+body.dark .expandable-content::-webkit-scrollbar-track,
+body.dark #bioPanel::-webkit-scrollbar-track {
+    background:#333;
+}
+.expandable-content::-webkit-scrollbar-thumb,
+#bioPanel::-webkit-scrollbar-thumb {
+    background-color:#1e90ff;
+    border-radius:10px;
+    border:2px solid transparent;
+    background-clip:content-box;
+}
+.expandable-content::-webkit-scrollbar-thumb:hover,
+#bioPanel::-webkit-scrollbar-thumb:hover {
+    background-color:#0d62c1;
+}
+.expandable-content,
+#bioPanel {
+    scrollbar-width:thin;
+    scrollbar-color:#1e90ff #f0f0f0;
+}
+body.dark .expandable-content,
+body.dark #bioPanel {
+    scrollbar-color:#1e90ff #333;
 }
 
-/* ===== TECHNICAL TILES ===== */
-.technical-tiles {
-    display:flex;
-    flex-wrap:wrap;
-    gap:10px;
-    justify-content:center;
-}
-.technical-tiles div {
-    padding:10px 15px;
-    border-radius:12px;
-    background:var(--tile-light);
-    box-shadow:2px 2px 10px var(--shadow);
-}
-body.dark .technical-tiles div {
-    background:var(--tile-dark);
-    color:var(--text-dark);
-}
-
-/* ===== RESPONSIVE ===== */
-@media(max-width:1200px){
-    #profileSection{flex-direction:column;align-items:center}
+@media(max-width:1200px) {
+    #profileSection {flex-direction:column;align-items:center;gap:30px;}
+    .sideTile{max-width:90%;}
+    #profileTile{flex:0 0 auto;}
 }
 </style>
 </head>
-
 <body>
 
-<header>
-    <h1>Eska Rashid Portfolio</h1>
-</header>
+<header><h1>Hannah Ambrie Majeed – Portfolio</h1></header>
 
 <div id="darkModeToggle" onclick="toggleDarkMode()">Dark Mode</div>
 
-<!-- MENU -->
+<!-- MENU ROWS -->
 <div class="menu-row">
     <div class="menu-tile" onclick="openSection('about')">About</div>
     <div class="menu-tile" onclick="openSection('qualifications')">Qualifications</div>
-    <div class="menu-tile" onclick="openSection('strengths')">Strengths</div>
+    <div class="menu-tile" onclick="openSection('strengths')">Skills</div>
     <div class="menu-tile" onclick="openSection('ambitions')">Ambitions</div>
 </div>
 
 <div class="menu-row">
-    <div class="menu-tile" onclick="openSection('technical')">Technical</div>
-    <div class="menu-tile" onclick="openSection('cv')">CV</div>
+    <div class="menu-tile" onclick="openSection('experience')">Experience</div>
+    <div class="menu-tile" onclick="openSection('education')">Education</div>
     <div class="menu-tile" onclick="openSection('contact')">Contact</div>
 </div>
 
-<!-- PROFILE -->
+<!-- PROFILE SECTION -->
 <div id="profileSection">
 
+    <!-- Personal Statement -->
     <div class="sideTile">
-        <div class="tileHeader" onclick="toggleExpandable('personalPanel')">
-            Personal Statement
-        </div>
-        <div id="personalPanel" class="expandable show">
-            <p>Passionate computing professional and programme leader specialising in AI and educational innovation.</p>
+        <div class="tileHeader" onclick="toggleExpandable('personalPanel')">Professional Summary</div>
+        <div id="personalPanel" class="expandable">
+            <div class="expandable-content">
+<p>As a qualified English teacher with a PGCE and experience across FE and HE, I have taught the GCSE and IGCSE curricula across a range of settings, including MAT and Catholic schools, as well as private tutoring on a 1-1 basis. Skilled in curriculum development, educational content/instructional/digital design, academic support, workshop delivery, and maintaining accurate student data and records, supporting international, SEN, and ESL learners. Adept at curriculum development, student retention strategies, and administrative tasks within both classroom and higher education environments. Experience across various industries has taught me to balance customer satisfaction, timely delivery, and tailored communication skills.</p>
+            </div>
         </div>
     </div>
 
+    <!-- Profile Image -->
     <div id="profileTile" onclick="toggleExpandable('bioPanel')">
-        <img src="https://raw.githubusercontent.com/Eska3210/Website/main/Eska%20Rashid%20photo%20PNG.png">
+        <img src="https://via.placeholder.com/180" alt="Hannah Majeed Photo">
         <div id="bioPanel">
-            <p>Programme Leader for Computing, AI & Technology Leadership.</p>
+            <div class="expandable-content">
+<p>Professional Overview: Hannah Ambrie Majeed is an experienced English teacher with a PGCE and a background in FE and HE. She specialises in GCSE & IGCSE English instruction, SEN and ESL learner support, digital design, curriculum development, and student engagement. Hannah has extensive experience in tutoring, workshop delivery, and supporting diverse student populations. Her professional approach combines educational expertise with strong organisational and administrative skills, ensuring effective learning outcomes and student success.</p>
+            </div>
         </div>
     </div>
 
+    <!-- Testimonials (Optional) -->
     <div class="sideTile">
-        <div class="tileHeader" onclick="toggleExpandable('testimonialPanel')">
-            Testimonials
-        </div>
+        <div class="tileHeader" onclick="toggleExpandable('testimonialPanel')">Testimonials</div>
         <div id="testimonialPanel" class="expandable">
-            <p>“Outstanding leadership and innovation.”</p>
+            <div class="expandable-content">
+                <p>No testimonials available currently.</p>
+            </div>
         </div>
     </div>
 
 </div>
 
+<!-- CONTENT BOX -->
 <div id="contentBox"></div>
 
 <script>
+const sections = {
+about:`<p>Hannah Ambrie Majeed is an experienced English teacher and educational professional.</p>`,
+
+qualifications:`<ul>
+<li>PGCE with QTS – Secondary English, Leeds Trinity University (2024)</li>
+<li>BA (Hons) English Literature – 2:1, University of Huddersfield (2023)</li>
+<li>MA, Educational Technology (EdTech) – Keele University (2025-2026)</li>
+</ul>`,
+
+strengths:`<h2>Skills & Expertise</h2>
+<div class="technical-tiles">
+<div>GCSE & IGCSE English Instruction</div>
+<div>SEN & ESL Learner Support</div>
+<div>Digital Design & Curriculum Development</div>
+<div>Student Engagement & Behaviour Management</div>
+<div>Workshop Delivery & Facilitation</div>
+<div>Academic Writing & Essay Support</div>
+<div>Microsoft Office, Teams, VLEs</div>
+<div>Retention & Inclusion Strategies</div>
+</div>`,
+
+ambitions:`<ul>
+<li>Continue advancing educational technology expertise</li>
+<li>Enhance curriculum development and instructional design</li>
+<li>Support diverse learners and promote inclusion</li>
+</ul>`,
+
+experience:`<h2>Professional Experience</h2>
+<div style="max-height:400px;overflow-y:auto;padding-right:10px;">
+<p><strong>Academic Tutor – Elizabeth School of London | Jun 2024 – Present</strong><br>
+Supported international HE students, led workshops, coordinated with HE stakeholders across multiple campuses.</p>
+
+<p><strong>GCSE English Tutor – Learn with SAT, Halifax | Jan 2025 – Aug 2025</strong><br>
+Delivered one-to-one SEN tutoring, created bespoke KS4 curriculum, designed digital resources.</p>
+
+<p><strong>English Lecturer – Keighley College | Oct 2024 – Mar 2025</strong><br>
+Delivered GCSE English resit lessons, designed inclusive resources, managed classroom behaviour.</p>
+
+<p><strong>English Teacher (PGCE Placements) – Trinity Academy Halifax & All Saints Catholic College | Sep 2023 – Jun 2024</strong><br>
+Taught GCSE English, differentiated for SEN, ADHD, Autism, and ESL needs.</p>
+
+<p><strong>English Tutor – Hillhouse Tutoring Centre | 2022 – 2024</strong><br>
+Delivered tuition for 11+, SATs, and GCSE (AQA-focused).</p>
+
+<p><strong>Career Advisor – CXK National Careers Service | 2022 – 2023</strong><br>
+Provided career guidance for vulnerable adults, workshops, CV support, and progression planning.</p>
+</div>`,
+
+education:`<h2>Education</h2>
+<ul>
+<li>MA, Educational Technology (EdTech) – Keele University (2025-2026)</li>
+<li>PGCE with QTS – Secondary English – Leeds Trinity University (2024)</li>
+<li>BA (Hons) English Literature – 2:1, University of Huddersfield (2023)</li>
+<li>GCSEs – North Halifax Grammar School & The Halifax Academy</li>
+</ul>
+<p>Certifications: Safeguarding (PREVENT), Enhanced DBS – Update Service</p>`,
+
+contact:`<p>Email: <a href="mailto:hannahmajeeda@gmail.com">hannahmajeeda@gmail.com</a></p>
+<p>LinkedIn: <a href="https://www.linkedin.com/in/hannah-ambrie-majeed-b3767431b" target="_blank">linkedin.com/in/hannah-ambrie-majeed-b3767431b</a></p>
+<p>Mobile: 07948 705610</p>`
+};
+
+function openSection(name){
+    const box=document.getElementById("contentBox");
+    box.style.display="block";
+    box.innerHTML=sections[name];
+    box.scrollIntoView({behavior:"smooth"});
+}
+
 function toggleExpandable(id){
-    document.getElementById(id).classList.toggle("show");
+    document.getElementById(id).classList.toggle('show');
 }
 
 function toggleDarkMode(){
     document.body.classList.toggle("dark");
-    document.getElementById("darkModeToggle").textContent =
-        document.body.classList.contains("dark") ? "Light Mode" : "Dark Mode";
-}
-
-function openSection(name){
-    document.getElementById("contentBox").innerHTML =
-        "<p>"+name+" section loaded.</p>";
+    document.getElementById("darkModeToggle").textContent=
+        document.body.classList.contains("dark")?"Light Mode":"Dark Mode";
 }
 </script>
 
