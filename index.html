@@ -32,18 +32,15 @@ body.dark #bioPanel {
     background:var(--tile-dark);
     color:var(--text-dark);
 }
-
 body.dark header {
     background: var(--tile-dark);
     color: var(--text-dark);
     border-bottom: 2px solid #444;
 }
-
 body.dark .tileHeader {
     background: var(--tile-dark);
     color: var(--text-dark);
 }
-
 body.dark .menu-tile,
 body.dark .expandable,
 body.dark #bioPanel,
@@ -54,7 +51,6 @@ body.dark #contentBox {
     color: #f1f1f1;
     box-shadow: 3px 3px 16px rgba(0,0,0,0.6);
 }
-
 body.dark a {
     color: #1e90ff;
     text-decoration: underline;
@@ -290,13 +286,14 @@ body.dark #bioPanel {
 <div class="menu-row">
     <div class="menu-tile" onclick="openSection('experience')">Experience</div>
     <div class="menu-tile" onclick="openSection('education')">Education</div>
+    <div class="menu-tile" onclick="openSection('cv')">Full CV</div>
     <div class="menu-tile" onclick="openSection('contact')">Contact</div>
 </div>
 
 <!-- PROFILE SECTION -->
 <div id="profileSection">
 
-    <!-- Personal Statement -->
+    <!-- Professional Summary -->
     <div class="sideTile">
         <div class="tileHeader" onclick="toggleExpandable('personalPanel')">Professional Summary</div>
         <div id="personalPanel" class="expandable">
@@ -388,6 +385,10 @@ education:`<h2>Education</h2>
 <li>GCSEs – North Halifax Grammar School & The Halifax Academy</li>
 </ul>
 <p>Certifications: Safeguarding (PREVENT), Enhanced DBS – Update Service</p>`,
+
+cv:`<h2>Full CV</h2>
+<p><a href="Hannah Ambrie Majeed CV ..pdf" download>Download Hannah's CV</a></p>
+<iframe src="Hannah Ambrie Majeed CV ..pdf" style="width:100%;height:600px;border:none;border-radius:12px;"></iframe>`,
 
 contact:`<p>Email: <a href="mailto:hannahmajeeda@gmail.com">hannahmajeeda@gmail.com</a></p>
 <p>LinkedIn: <a href="https://www.linkedin.com/in/hannah-ambrie-majeed-b3767431b" target="_blank">linkedin.com/in/hannah-ambrie-majeed-b3767431b</a></p>
